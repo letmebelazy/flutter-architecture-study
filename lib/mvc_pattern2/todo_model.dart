@@ -1,6 +1,7 @@
 import 'package:intl/intl.dart';
 import '../models/todo.dart';
 
+// TodoModelMVC와 동일
 class TodoModelMVC2 {
   List<Todo> todos = [];
 

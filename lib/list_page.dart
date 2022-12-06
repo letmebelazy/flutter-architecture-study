@@ -41,6 +41,8 @@ class ListPage extends StatelessWidget {
 class CustomListTile extends StatelessWidget {
   final int index;
   final String title;
+
+  // pushNamed로 라우팅하기 휘한 String 리스트
   final List<String> routes = [
     TodoPage.route,
     TodoPageMVC.route,
@@ -58,6 +60,7 @@ class CustomListTile extends StatelessWidget {
     return Center(
       child: TextButton(
         onPressed: () {
+          // 누르면 해당 페이지로 이동함. 아직 구현되지 않은 페이지는 이동 불가
           if (index < 3) {
             Navigator.pushNamed(
               context,
