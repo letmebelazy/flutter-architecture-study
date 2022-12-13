@@ -1,7 +1,11 @@
+import 'package:architecture_patterns/mvc_pattern/todo_model.dart';
 import 'package:architecture_patterns/mvc_pattern/todo_view.dart';
 import 'package:architecture_patterns/mvc_pattern2/todo_view_and_controller.dart';
+import 'package:architecture_patterns/mvp_pattern/todo_presenter.dart';
+import 'package:architecture_patterns/mvp_pattern/todo_view.dart';
 import 'package:flutter/material.dart';
 import 'list_page.dart';
+import 'mvp_pattern/todo_model.dart';
 import 'no pattern/todo_page.dart';
 
 void main() {
@@ -29,6 +33,9 @@ class MyApp extends StatelessWidget {
         '/todo_page_mvc': (context) => const TodoPageMVC(),
         // 위 페이지보다 훨씬 더 mvc패턴 원칙에 충실해서 구현한 페이지
         '/todo_page_mvc2': (context) => const TodoPageMVC2(),
+        // 플러터 mvp패턴
+        '/todo_page_mvp': (context) => TodoPageMVP(
+            todoPresenter: TodoPresenterImpl(model: TodoModelMVP())),
       },
     );
   }

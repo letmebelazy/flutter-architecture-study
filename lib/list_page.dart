@@ -1,4 +1,5 @@
 import 'package:architecture_patterns/mvc_pattern/todo_view.dart';
+import 'package:architecture_patterns/mvp_pattern/todo_view.dart';
 import 'package:architecture_patterns/no%20pattern/todo_page.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +48,7 @@ class CustomListTile extends StatelessWidget {
     TodoPage.route,
     TodoPageMVC.route,
     TodoPageMVC2.route,
+    TodoPageMVP.route,
   ];
 
   CustomListTile({
@@ -61,7 +63,7 @@ class CustomListTile extends StatelessWidget {
       child: TextButton(
         onPressed: () {
           // 누르면 해당 페이지로 이동함. 아직 구현되지 않은 페이지는 이동 불가
-          if (index < 3) {
+          if (index < 4) {
             Navigator.pushNamed(
               context,
               routes[index],
