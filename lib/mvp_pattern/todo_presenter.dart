@@ -5,9 +5,11 @@ import '../models/todo.dart';
 class TodoPresenterImpl implements TodoPresenter {
   @override
   TodoModelMVP model;
+  @override
+  List<Todo> todos = [];
   late TodoView view;
 
-  TodoPresenterImpl({required this.model});
+  TodoPresenterImpl({required this.model}) : todos = model.todos;
 
   @override
   void setView(view) {
