@@ -6,6 +6,8 @@ import 'package:architecture_patterns/mvp_pattern/todo_view.dart';
 import 'package:flutter/material.dart';
 import 'list_page.dart';
 import 'mvp_pattern/todo_model.dart';
+import 'mvvm_pattern/todo_model.dart';
+import 'mvvm_pattern/todo_view.dart';
 import 'no pattern/todo_page.dart';
 
 void main() {
@@ -36,6 +38,8 @@ class MyApp extends StatelessWidget {
         // 플러터 mvp패턴
         '/todo_page_mvp': (context) => TodoPageMVP(
             todoPresenter: TodoPresenterImpl(model: TodoModelMVP())),
+        // 플러터 mvvm패턴
+        '/todo_page_mvvm': (context) => TodoPageMVVM(),
       },
     );
   }
