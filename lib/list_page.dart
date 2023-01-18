@@ -1,9 +1,11 @@
+import 'package:architecture_patterns/bloc_pattern2/todo_view.dart';
 import 'package:architecture_patterns/mvc_pattern/todo_view.dart';
 import 'package:architecture_patterns/mvp_pattern/todo_view.dart';
 import 'package:architecture_patterns/mvvm_pattern/todo_view.dart';
 import 'package:architecture_patterns/no%20pattern/todo_page.dart';
 import 'package:flutter/material.dart';
 
+import 'bloc_pattern/todo_view.dart';
 import 'mvc_pattern2/todo_view_and_controller.dart';
 
 class ListPage extends StatelessWidget {
@@ -17,6 +19,7 @@ class ListPage extends StatelessWidget {
     'MVP pattern',
     'MVVM pattern',
     'BLoC pattern',
+    'BLoC pattern 2',
     'Clean Architecture',
     'MVC+S pattern',
   ];
@@ -51,6 +54,8 @@ class CustomListTile extends StatelessWidget {
     TodoPageMVC2.route,
     TodoPageMVP.route,
     TodoPageMVVM.route,
+    TodoPageBloc.route,
+    TodoPageBloc2.route,
   ];
 
   CustomListTile({
@@ -65,7 +70,7 @@ class CustomListTile extends StatelessWidget {
       child: TextButton(
         onPressed: () {
           // 누르면 해당 페이지로 이동함. 아직 구현되지 않은 페이지는 이동 불가
-          if (index < 5) {
+          if (index < 7) {
             Navigator.pushNamed(
               context,
               routes[index],
