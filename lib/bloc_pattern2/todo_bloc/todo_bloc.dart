@@ -13,7 +13,6 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<AddEvent>((event, emit) {
       model.addTodo(event.newTitle);
       emit(state.copyWith(model.todos));
-      print(state.todos);
     });
 
     on<EditEvent>((event, emit) {

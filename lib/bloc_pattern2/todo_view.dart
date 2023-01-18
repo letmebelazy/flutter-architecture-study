@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'todo_bloc/todo_bloc.dart';
-import 'todo_model.dart';
 
 class TodoPageBloc2 extends StatelessWidget {
   // 현 페이지에 오기 위한 라우트 이름
