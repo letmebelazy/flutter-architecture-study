@@ -8,6 +8,8 @@ import 'package:architecture_patterns/mvp_pattern/todo_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_pattern/todo_view.dart';
+import 'clean_architecture/presentation/bloc/todo_bloc.dart';
+import 'clean_architecture/presentation/todo_page.dart';
 import 'list_page.dart';
 import 'mvp_pattern/todo_model.dart';
 import 'mvvm_pattern/todo_view.dart';
@@ -22,8 +24,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<TodoBloc>(
-      create: (context) => TodoBloc(TodoModelBloc2()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => TodoBloc(
+            TodoModelBloc2(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => TodoCleanBloc(),
+        ),
+      ],
       child: MaterialApp(
         title: 'Flutter Architecture Patterns',
         theme: ThemeData(
@@ -48,7 +59,9 @@ class MyApp extends StatelessWidget {
           // 플러터 bloc패턴
           '/todo_page_bloc': (context) => TodoPageBloc(),
           // 패키지를 이용한 bloc패턴
-          '/todo_page_bloc2': (context) => TodoPageBloc2(),
+          '/todo_page_bloc2': (context) => const TodoPageBloc2(),
+          // 클린 아키텍처 맛보기
+          '/clean_architecture': (context) => const TodoPageClean(),
         },
       ),
     );

@@ -1,9 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
-class Todo extends Equatable {
-  @override
-  List<Object?> get props => [title, isDone, createdAt];
+class Todo {
   // 투두 제목
   String title;
   // 투두 완료 상태

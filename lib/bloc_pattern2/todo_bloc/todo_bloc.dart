@@ -22,6 +22,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
 
     on<ToggleEvent>((event, emit) {
       model.toggleTodo(event.index);
+      emit(state.copyWith(model.todos));
     });
   }
 }

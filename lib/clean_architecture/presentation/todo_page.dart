@@ -1,27 +1,27 @@
+import 'package:architecture_patterns/clean_architecture/presentation/bloc/todo_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'todo_bloc/todo_bloc.dart';
 
-class TodoPageBloc2 extends StatelessWidget {
-  // 현 페이지에 오기 위한 라우트 이름
-  // 크게 신경 쓸 필요 없음
-  static const String route = '/todo_page_bloc2';
-  const TodoPageBloc2({Key? key}) : super(key: key);
+class TodoPageClean extends StatelessWidget {
+  static const String route = '/clean_architecture';
+  const TodoPageClean({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BLOC 패턴으로 개발하는 경우 2'),
+        title: const Text('Clean Architecture로 개발하는 경우'),
       ),
-      body: BlocBuilder<TodoBloc, TodoState>(
+      body: BlocBuilder<TodoCleanBloc, TodoCleanState>(
         builder: (context, state) {
           return ListView.builder(
             itemCount: state.todos.length,
             itemBuilder: ((context, index) {
               return ListTile(
                 onLongPress: () {
-                  context.read<TodoBloc>().add(ToggleEvent(index: index));
+                  context
+                      .read<TodoCleanBloc>()
+                      .add(ToggleTodoEvent(index: index));
                   // 투두 완료 상태가 변경되면 스낵바로 알림
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -35,7 +35,7 @@ class TodoPageBloc2 extends StatelessWidget {
                 onTap: () {
                   showDialog(
                     context: context,
-                    builder: (context) {
+                    builder: (_) {
                       // 패턴을 쓰지 않은 페이지와 마찬가지로
                       // 텍스트필드의 값을 저장할 임시값
                       String tempTodo = '';
@@ -59,8 +59,8 @@ class TodoPageBloc2 extends StatelessWidget {
                           TextButton(
                             child: const Text('수정'),
                             onPressed: () {
-                              context.read<TodoBloc>().add(
-                                  EditEvent(index: index, newTitle: tempTodo));
+                              context.read<TodoCleanBloc>().add(EditTodoEvent(
+                                  index: index, newTitle: tempTodo));
                               Navigator.pop(context);
                             },
                           )
@@ -89,7 +89,7 @@ class TodoPageBloc2 extends StatelessWidget {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) {
+            builder: (_) {
               String tempTodo = '';
               return AlertDialog(
                 content: SizedBox(
@@ -111,8 +111,8 @@ class TodoPageBloc2 extends StatelessWidget {
                     child: const Text('추가'),
                     onPressed: () {
                       context
-                          .read<TodoBloc>()
-                          .add(AddEvent(newTitle: tempTodo));
+                          .read<TodoCleanBloc>()
+                          .add(AddTodoEvent(newTitle: tempTodo));
                       Navigator.pop(context);
                     },
                   )
